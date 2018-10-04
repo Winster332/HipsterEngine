@@ -66,10 +66,11 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeltaTime.cs" />
-    <Compile Include="FS\IAssert.cs" />
+    <Compile Include="Files\IFiles.cs" />
     <Compile Include="GameScreen.cs" />
     <Compile Include="Graphics\Camera.cs" />
     <Compile Include="Graphics\Canvas.cs" />

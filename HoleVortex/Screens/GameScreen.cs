@@ -52,6 +52,30 @@ namespace HoleVortex.Screens
             {
                 HipsterEngine.Screens.SetScreen(new MenuScreen(), null, null);
             };
+
+            LoadProfile();
+        }
+        
+        public void LoadProfile()
+        {
+            Profile profile = null;
+            
+            if (!HipsterEngine.Files.Exist(Assert.PathToProfile))
+            {
+                profile = new Profile
+                {
+                    Level = 1,
+                    Balls = 0
+                };
+                HipsterEngine.Files.Serialize(profile, Assert.PathToProfile);
+            }
+            else
+            {
+                profile = HipsterEngine.Files.Deserialize<Profile>(Assert.PathToProfile);
+            }
+
+            LayoutRecords.TextRecord = profile.Balls.ToString();
+            PlanetStart.Text = profile.Level.ToString();
         }
 
         private void OnUnloaded(Screen screen)
@@ -70,6 +94,16 @@ namespace HoleVortex.Screens
 
         private void TriangleOnEndGame(GameResult result)
         {
+            var profile = HipsterEngine.Files.Deserialize<Profile>(Assert.PathToProfile);
+            profile.Balls += result.Balls;
+
+            if (result.IsWon)
+            {
+                profile.Level++;
+            }
+
+            HipsterEngine.Files.Serialize<Profile>(profile, Assert.PathToProfile);
+
             AnimationEndGame.Start(0, 255, 5);
         }
 

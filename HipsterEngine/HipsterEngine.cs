@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ConsoleApplication2.FS;
 using ConsoleApplication2.Graphics;
 using ConsoleApplication2.UI.Components.Screens;
 using ConsoleApplication2.UI.Events;
@@ -14,6 +15,7 @@ namespace ConsoleApplication2
         public ScreenController Screens { get; set; }
         public PhysicsController Physics { get; set; }
         public DeltaTime DeltaTime { get; set; }
+        public IFiles Files { get; set; }
 
         public HipsterEngine(float width, float height)
         {

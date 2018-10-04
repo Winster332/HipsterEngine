@@ -9,6 +9,7 @@ namespace HoleVortex.Asserts
     public static class Assert
     {
         public static List<SKBitmap> Bitmaps;
+        public static string PathToProfile { get; set; } = "profile.xml";
         
         public static void Load(string[] names)
         {

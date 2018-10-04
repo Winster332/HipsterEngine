@@ -26,11 +26,12 @@ namespace HipsterEngine.Desktop
 
         public ConsoleApplication2.HipsterEngine Engine { get; set; }
         
-        public GameWindowGPU(int width, int height) : base(width, height, GraphicsMode.Default, "OpenTK Quick Start Sample")
+        public GameWindowGPU(int width, int height) : base(width, height, GraphicsMode.Default, "HipsterEngine 1.0")
         {
             VSync = VSyncMode.Off;
             
             Engine = new ConsoleApplication2.HipsterEngine(Width, Height);
+            Engine.Files = new Files();
             
             PaintSurface += OnPaintSurface;
         }
