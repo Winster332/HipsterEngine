@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using ConsoleApplication2.UI.Animations;
 using ConsoleApplication2.UI.Components;
 using ConsoleApplication2.UI.Components.Screens;
 using ConsoleApplication2.UI.Events;
@@ -20,12 +21,16 @@ namespace HoleVortex.Screens
         public PlanetStart Planet { get; set; }
         public Triangle Triangle { get; set; }
         public SKColor BackgroundColor { get; set; }
+        public AnimationFloat AnimationEndGame { get; set; }
+        public SKPaint PaintAnimation { get; set; }
         private float _time;
         
         public override void OnLoad()
         {
             Update += OnUpdate;
             Paint += OnPaint;
+            MouseDown += OnMouseDown;
+            Unloaded += OnUnloaded;
             
             LayoutRecords = new LayoutRecord(HipsterEngine);
             Planet = new PlanetStart(HipsterEngine, Width / 2, Height / 4, Height / 8);
@@ -41,18 +46,33 @@ namespace HoleVortex.Screens
             }, 1);
             BackgroundColor = new SKColor(50, 50, 50);
             _time = 0;
-            
-            MouseDown += OnMouseDown;
-
 
             paint = new SKPaint
             {
                 IsAntialias = true,
                 Color = new SKColor(0, 0, 0)
             };
+            
+            AnimationEndGame = new AnimationFloat();
+            AnimationEndGame.Start(255, 0, 5);
+            
         }
 
-        public SKBitmap bitmap;
+        private void OnUnloaded(Screen screen)
+        {
+            LayoutRecords.Dispose();
+            Planet.Dispose();
+            Triangle.Dispose();
+            LabelTouchMe.Dispose();
+            paint.Dispose();
+            AnimationEndGame.Dispose();
+            PaintAnimation.Dispose();
+
+            Update -= OnUpdate;
+            Paint -= OnPaint;
+            MouseDown -= OnMouseDown;
+            Unloaded -= OnUnloaded;
+        }
         public SKPaint paint;
 
         private void OnMouseDown(UIElement element, MouseState mousestate)
@@ -64,6 +84,7 @@ namespace HoleVortex.Screens
         {
             _time += 0.03f;
             LabelTouchMe.Scale = (float) Math.Cos(Math.Sin(_time) / 2);
+            AnimationEndGame.Update();
         }
 
         private void OnPaint(UIElement element, SKCanvas canvas)
@@ -84,6 +105,13 @@ namespace HoleVortex.Screens
             HipsterEngine.Surface.Canvas.Restore();
             
             LabelTouchMe.Draw();
+
+            PaintAnimation = new SKPaint
+            {
+                Style = SKPaintStyle.Fill,
+                Color = new SKColor(0, 0, 0, Convert.ToByte(AnimationEndGame.CurrentValue))
+            };
+            HipsterEngine.Surface.Canvas.DrawRect(0, 0, Width, Height, PaintAnimation);
         }
     }
 }

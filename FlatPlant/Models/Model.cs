@@ -1,5 +1,6 @@
 ﻿using System;
 using ConsoleApplication2.Graphics;
+using ConsoleApplication2.UI.Animations;
 using FlatPlant.Extensions;
 using SkiaSharp;
 
@@ -11,13 +12,13 @@ namespace FlatPlant.Models
         protected ConsoleApplication2.HipsterEngine _engine;
         public SKPaint Paint { get; set; }
         public Random Rand { get; set; }
-        public TimerWatch Timer { get; set; }
+        public TimeWatch Timer { get; set; }
 
         public Model(ConsoleApplication2.HipsterEngine engine)
         {
             _engine = engine;
             _canvas = _engine.Surface.Canvas;
-            Timer = new TimerWatch();
+            Timer = new TimeWatch();
             Rand = new Random();
             
             Paint = new SKPaint

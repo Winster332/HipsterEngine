@@ -4,7 +4,7 @@ using SkiaSharp;
 
 namespace HoleVortex.Screens.UI
 {
-    public class LayoutTop
+    public class LayoutTop : IDisposable
     {
         public Label LabelBalls { get; set; }
         public ButtonPause BtnPause { get; set; }
@@ -31,9 +31,17 @@ namespace HoleVortex.Screens.UI
             BtnPause.Click += (element, state) =>
             {
                 if (BtnPause.TextureId == 0)
+                {
                     BtnPause.TextureId = 1;
+                    
+                    _engine.Screens.CurrentScreen.OnPaused();
+                }
                 else if (BtnPause.TextureId == 1)
+                {
                     BtnPause.TextureId = 0;
+                    
+                    _engine.Screens.CurrentScreen.OnResume();
+                }
             };
 
             _engine.Screens.CurrentScreen.MouseDown += (element, state) => BtnPause.OnMouseAction(state);
@@ -62,6 +70,12 @@ namespace HoleVortex.Screens.UI
         {
             LabelBalls.Draw();
             BtnPause.Draw(_engine.Surface.Canvas.GetSkiaCanvas());
+        }
+
+        public void Dispose()
+        {
+            LabelBalls?.Dispose();
+            BtnPause?.Dispose();
         }
     }
 }

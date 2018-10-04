@@ -15,7 +15,7 @@ namespace ConsoleApplication2.UI.Collisions
             Radius = 0;
         }
 
-        protected override bool IsIntersection(float x, float y)
+        public override bool IsIntersection(float x, float y)
         {
             var distance = Math.Sqrt(Math.Pow(X - x, 2) + Math.Pow(Y - y, 2));
 

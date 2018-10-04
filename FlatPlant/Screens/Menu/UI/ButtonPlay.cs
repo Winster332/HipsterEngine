@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleApplication2.UI.Animations;
 using ConsoleApplication2.UI.Components.Buttons;
 using FlatPlant.Extensions;
 using SkiaSharp;
@@ -9,7 +10,7 @@ namespace FlatPlant.Screens.UI
     {
         public SKPaint Paint1 { get; set; }
         public SKPaint Paint2 { get; set; }
-        public TimerWatch Timer { get; set; }
+        public TimeWatch Timer { get; set; }
         
         public ButtonPlay(float x, float y, float radius, string text) : base(x, y, radius, text)
         {
@@ -29,7 +30,7 @@ namespace FlatPlant.Screens.UI
                 Color = new SKColor(180, 100, 0, 150)
             };
             
-            Timer = new TimerWatch();
+            Timer = new TimeWatch();
             Timer.Tick += tick => { Radius += (float)Math.Cos(tick / 10.0f); };
 
             MouseUp += (element, state) =>

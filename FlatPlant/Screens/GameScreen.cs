@@ -5,6 +5,7 @@ using Box2DX.Common;
 using Box2DX.Dynamics;
 using ConsoleApplication2;
 using ConsoleApplication2.Physics.Bodies;
+using ConsoleApplication2.UI.Animations;
 using ConsoleApplication2.UI.Components;
 using ConsoleApplication2.UI.Components.Buttons;
 using ConsoleApplication2.UI.Components.GamePad;
@@ -153,10 +154,10 @@ namespace FlatPlant.Screens
                 Robots.First().Arms.Attack();
             };
             
-            Timer = new TimerWatch();
+            Timer = new TimeWatch();
             Timer.Tick += tick => { ((Gun1) Robots.First().Arms).SetAngleRad(tick); };
         }
-        private TimerWatch Timer { get; set; }
+        private TimeWatch Timer { get; set; }
         public float ValueX { get; set; } = 0;
 
         public void InitializeBall()

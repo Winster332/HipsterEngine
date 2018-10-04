@@ -16,8 +16,8 @@ namespace HipsterEngine.Particles
         {
             for (var i = 0; i < count; i++)
             {
-                var velocity = GetV2((float)(Math.PI * 5d * Random.NextDouble()), 1f);
-                var part = new CircleParticle(5, 0.5f, x, y, velocity.X, velocity.Y, 0, 0.01f, 200);
+                var velocity = GetV2((float)(Math.PI * 5d * Random.NextDouble()), (float) Random.NextDouble());
+                var part = new CircleParticle(15, 0.2f, x, y, velocity.X, velocity.Y, 0, 0.01f, 200);
                 
                 Particles.Add(part);
             }

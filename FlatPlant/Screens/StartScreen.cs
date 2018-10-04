@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ConsoleApplication2;
 using ConsoleApplication2.Physics.Bodies;
+using ConsoleApplication2.UI.Animations;
 using ConsoleApplication2.UI.Components;
 using ConsoleApplication2.UI.Components.Screens;
 using FlatPlant.Extensions;
@@ -12,8 +13,8 @@ namespace FlatPlant.Screens
     {
         public SKPaint PaintWhite { get; set; }
         public SKPaint PaintStroke { get; set; }
-        public TimerWatch Timer { get; set; }
-        public TimerWatch TimerForIntent { get; set; }
+        public TimeWatch Timer { get; set; }
+        public TimeWatch TimerForIntent { get; set; }
         public int Number { get; set; }
         public byte Alpha = 0;
         
@@ -38,11 +39,11 @@ namespace FlatPlant.Screens
             Paint += OnPaint;
             Update += OnUpdate;
             
-            TimerForIntent = new TimerWatch();
+            TimerForIntent = new TimeWatch();
             TimerForIntent.Tick += tick => { Alpha = (byte) tick; };
             TimerForIntent.Complated += tick => HipsterEngine.Screens.SetScreen(new NavigatorScreen());
             
-            Timer = new TimerWatch();
+            Timer = new TimeWatch();
             Timer.Tick += tick =>
             {
                 Number = 3 - tick;

@@ -3,7 +3,7 @@ using SkiaSharp;
 
 namespace HoleVortex.Screens.UI
 {
-    public class Label
+    public class Label : IDisposable
     {
         public float X { get; set; }
         public float Y { get; set; }
@@ -29,6 +29,11 @@ namespace HoleVortex.Screens.UI
             _engine.Surface.Canvas.Scale(Scale, Scale);
             _engine.Surface.Canvas.DrawText(Text, 0, 0, Style);
             _engine.Surface.Canvas.Restore();
+        }
+
+        public void Dispose()
+        {
+            Style?.Dispose();
         }
     }
 }

@@ -108,6 +108,10 @@
     <Compile Include="SVG\SvgRect.cs" />
     <Compile Include="SVG\SvgStyle.cs" />
     <Compile Include="SVG\SvgTransform.cs" />
+    <Compile Include="UI\Animations\AnimationColor.cs" />
+    <Compile Include="UI\Animations\AnimationFloat.cs" />
+    <Compile Include="UI\Animations\IAnimation.cs" />
+    <Compile Include="UI\Animations\TimeWatch.cs" />
     <Compile Include="UI\Collisions\CircleCollision.cs" />
     <Compile Include="UI\Collisions\RectCollision.cs" />
     <Compile Include="UI\Components\Buttons\CircleButton.cs" />
@@ -117,9 +121,13 @@
     <Compile Include="UI\Components\Layout\AbsoluteLayout.cs" />
     <Compile Include="UI\Components\Layout\LinearLayout.cs" />
     <Compile Include="UI\Components\Layout\LinearLayoutOrientation.cs" />
+    <Compile Include="UI\Components\Screens\Animations\AnimationBlackWhite.cs" />
     <Compile Include="UI\Components\Screens\Events\PaintEventHandler.cs" />
     <Compile Include="UI\Components\Screens\Events\SwypeControl.cs" />
+    <Compile Include="UI\Components\Screens\Events\UnloadedScreenEventHandler.cs" />
     <Compile Include="UI\Components\Screens\Events\UpdateEventHandler.cs" />
+    <Compile Include="UI\Components\Screens\Intent.cs" />
+    <Compile Include="UI\Components\Screens\IScreenAnimation.cs" />
     <Compile Include="UI\Components\Screens\Screen.cs" />
     <Compile Include="UI\Components\Screens\ScreenController.cs" />
     <Compile Include="UI\Components\Screens\SwypeScreen.cs" />

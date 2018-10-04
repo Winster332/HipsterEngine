@@ -17,7 +17,7 @@ namespace ConsoleApplication2.UI.Collisions
             Height = 0;
         }
         
-        protected override bool IsIntersection(float x, float y)
+        public override bool IsIntersection(float x, float y)
         {
             return x >= X && x <= X + Width && y >= Y && y <= Y + Height;
         }

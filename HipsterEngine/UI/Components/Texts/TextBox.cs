@@ -24,7 +24,7 @@ namespace ConsoleApplication2.UI.Components.Texts
             };
         }
         
-        protected override bool IsIntersection(float x, float y)
+        public override bool IsIntersection(float x, float y)
         {
             return false;
         }

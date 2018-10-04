@@ -1,9 +1,10 @@
-﻿using ConsoleApplication2.Graphics;
+﻿using System;
+using ConsoleApplication2.Graphics;
 using SkiaSharp;
 
 namespace HoleVortex.Screens.UI
 {
-    public class LayoutRecord
+    public class LayoutRecord : IDisposable
     {
         public float Y { get; set; }
         public float Radius { get; set; }
@@ -70,6 +71,12 @@ namespace HoleVortex.Screens.UI
             canvas.DrawLine(_x1Line2, _y1Line2, _x2Line2, _y2Line2, Paint);
             canvas.DrawCircle(_circleX, _circleY, Radius, Paint);
             canvas.DrawText(TextRecord, _textX, _textY, PaintText);
+        }
+
+        public void Dispose()
+        {
+            Paint?.Dispose();
+            PaintText?.Dispose();
         }
     }
 }

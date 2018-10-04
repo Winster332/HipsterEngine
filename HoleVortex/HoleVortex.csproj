@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Asserts\Resources" />
+    <Folder Include="Models\Particles" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.60.3\build\net45\SkiaSharp.targets')" />

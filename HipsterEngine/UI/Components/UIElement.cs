@@ -84,14 +84,14 @@ namespace ConsoleApplication2.UI.Components
             return true;
         }
 
-        protected abstract bool IsIntersection(float x, float y);
+        public abstract bool IsIntersection(float x, float y);
 
         public virtual void Dispose()
         {
             Childs.Clear();
             Childs = null;
             
-            Parent.Dispose();
+            Parent?.Dispose();
             Parent = null;
         }
     }

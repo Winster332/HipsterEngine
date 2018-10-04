@@ -68,7 +68,6 @@
   <ItemGroup>
     <Compile Include="AppWindow.cs" />
     <Compile Include="Extensions\ExtensionsVec2.cs" />
-    <Compile Include="Extensions\TimerWatch.cs" />
     <Compile Include="Graph\Joint.cs" />
     <Compile Include="Graph\Node.cs" />
     <Compile Include="Graph\Stage.cs" />

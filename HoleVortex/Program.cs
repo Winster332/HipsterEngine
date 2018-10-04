@@ -23,7 +23,7 @@ namespace HoleVortex
             
             using (var window = new AppWindow())
             {
-                window.Run(30.0f);
+                window.Run(60.0f, 60.0f);
             }
         }
     }

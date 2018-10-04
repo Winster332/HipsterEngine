@@ -1,7 +1,9 @@
 ﻿using System;
+using ConsoleApplication2.UI.Animations;
 using ConsoleApplication2.UI.Components;
 using ConsoleApplication2.UI.Components.Screens;
 using ConsoleApplication2.UI.Events;
+using HipsterEngine.Particles;
 using HoleVortex.Asserts;
 using HoleVortex.Models;
 using HoleVortex.Screens.UI;
@@ -16,41 +18,67 @@ namespace HoleVortex.Screens
         public LayoutRecord LayoutRecords { get; set; }
         public PlanetStart PlanetStart { get; set; }
         public MapPlanets Map { get; set; }
+        public AnimationFloat AnimationEndGame { get; set; }
         
         public override void OnLoad()
         {
             Update += OnUpdate;
             Paint += OnPaint;
             MouseDown += OnMouseDown;
+            Unloaded += OnUnloaded;
 
             LayoutRecords = new LayoutRecord(HipsterEngine);
             LayoutTop = new LayoutTop(HipsterEngine);
             PlanetStart = new PlanetStart(HipsterEngine, Width / 2, Height / 4, Height / 8);
             PlanetStart.AngularVelocity = 0.04f;
+            
+            HipsterEngine.Particles.AddParticleSystem(new ParticlesControllerFire(HipsterEngine));
+            
             var triangleRadius = PlanetStart.Radius / 4;
             var y = PlanetStart.Y - PlanetStart.Radius - triangleRadius + 2;
             Triangle = new Triangle(HipsterEngine, Width / 2, y, triangleRadius);
             Triangle.SetPlanet(PlanetStart);
-            Triangle.EndGame += TriangleOnEndGame;
             
             HipsterEngine.Surface.Canvas.Camera.X = -Width / 2;
             HipsterEngine.Surface.Canvas.Camera.Y = Height / 2;
             HipsterEngine.Surface.Canvas.Camera.SetTarget(PlanetStart.X - Width / 2, PlanetStart.Y + Height / 4);
             
-            Map = new MapPlanets(HipsterEngine);
+            Map = new MapPlanets(HipsterEngine, Triangle);
             Map.Generate();
-            Map.Triangle = Triangle;
+            Map.EndGame += TriangleOnEndGame;
             
+            AnimationEndGame = new AnimationFloat();
+            AnimationEndGame.Timer.Complated += tick =>
+            {
+                HipsterEngine.Screens.SetScreen(new MenuScreen(), null, null);
+            };
+        }
+
+        private void OnUnloaded(Screen screen)
+        {
+            Triangle.Dispose();
+            LayoutRecords.Dispose();
+            LayoutTop.Dispose();
+            PlanetStart.Dispose();
+            AnimationEndGame.Dispose();
+            
+            Update -= OnUpdate;
+            Paint -= OnPaint;
+            MouseDown -= OnMouseDown;
+            Unloaded -= OnUnloaded;
         }
 
         private void TriangleOnEndGame(GameResult result)
         {
-            Console.WriteLine("123");
+            AnimationEndGame.Start(0, 255, 5);
         }
 
         private void OnMouseDown(UIElement element, MouseState mousestate)
         {
-            Triangle.Jump();
+            if (!LayoutTop.BtnPause.IsIntersection(mousestate.X, mousestate.Y) && HipsterEngine.Screens.CurrentScreen.Enabled)
+            {
+                Triangle.Jump();
+            }
         }
 
         private void OnUpdate(double time, float dt)
@@ -58,6 +86,7 @@ namespace HoleVortex.Screens
             LayoutTop.Update();
             Map.Update();
             PlanetStart.Update();
+            AnimationEndGame.Update();
         }
 
         private void OnPaint(UIElement element, SKCanvas canvas)
@@ -77,6 +106,14 @@ namespace HoleVortex.Screens
             Map.Draw();
             
             HipsterEngine.Surface.Canvas.Restore();
+            
+            HipsterEngine.Particles.Draw(HipsterEngine.Surface.Canvas.GetSkiaCanvas());
+            
+            HipsterEngine.Surface.Canvas.DrawRect(0, 0, Width, Height, new SKPaint
+            {
+                Style = SKPaintStyle.Fill,
+                Color = new SKColor(0, 0, 0, Convert.ToByte(AnimationEndGame.CurrentValue))
+            });
         }
     }
 }

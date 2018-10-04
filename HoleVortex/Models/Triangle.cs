@@ -1,5 +1,6 @@
 ﻿using System;
 using Box2DX.Common;
+using HipsterEngine.Particles;
 using HoleVortex.Screens;
 using SkiaSharp;
 using Math = System.Math;
@@ -8,7 +9,7 @@ namespace HoleVortex.Models
 {
     public delegate void EndGameEventHandler(GameResult result);
     
-    public class Triangle
+    public class Triangle : IDisposable
     {
         public float X { get; set; }
         public float Y { get; set; }
@@ -20,15 +21,18 @@ namespace HoleVortex.Models
         public float VelacityX { get; set; }
         public float VelacityY { get; set; }
         public Planet CurrentPlanet { get; set; }
-        public event EndGameEventHandler EndGame;
+        public event EventHandler IncrementBalls;
         private ConsoleApplication2.HipsterEngine _engine;
-        private SKRect workspaceRect;
+        private float MaxMinHeight { get; set; } = 0;
+        public SKPaint Paint { get; set; }
+        public SKPath Path { get; set; }
         
         public Triangle(ConsoleApplication2.HipsterEngine engine, float x, float y, float radius)
         {
             _engine = engine;
             X = x;
             Y = y;
+            MaxMinHeight = Y - _engine.Surface.Height / 4;
             Radius = radius;
             A = new Vec2(-Radius, Radius);
             B = new Vec2(Radius, Radius);
@@ -36,12 +40,28 @@ namespace HoleVortex.Models
             VelacityX = 0;
             VelacityY = 0;
             Angle = 0;
-            workspaceRect = new SKRect(0, 0, _engine.Surface.Width, _engine.Surface.Height);
+            
+            Paint = new SKPaint
+            {
+                IsAntialias = true,
+                Style = SKPaintStyle.Fill,
+                Color = new SKColor(150, 150, 150)
+            };
+            
+            Path = new SKPath();
+            Path.MoveTo(A.X, A.Y);
+            Path.LineTo(B.X, B.Y);
+            Path.LineTo(C.X, C.Y);
+            Path.Close();
         }
 
         public void SetPlanet(Planet planet)
         {
             CurrentPlanet = planet;
+            MaxMinHeight = planet.Y;
+            
+            var ps = (ParticlesControllerFire) _engine.Particles.GetSystem(typeof(ParticlesControllerFire));
+            ps.AddBlood(CurrentPlanet.X, CurrentPlanet.Y, new Vec2(), 20);
             
             _engine.Surface.Canvas.Camera.SetTarget(0, -CurrentPlanet.Y + (_engine.Surface.Height) - _engine.Surface.Height / 4);
         }
@@ -51,11 +71,9 @@ namespace HoleVortex.Models
             X += VelacityX;
             Y += VelacityY;
 
-            workspaceRect.Top = _engine.Surface.Canvas.Camera.Y;
-            
             if (CurrentPlanet != null)
             {
-                Angle = CurrentPlanet.Angle + CurrentPlanet.CorrectAngle;
+                Angle = CurrentPlanet.Angle - CurrentPlanet.CorrectAngle;
 
                 var x = (float) Math.Cos(Angle - Math.PI / 2);
                 var y = (float) Math.Sin(Angle - Math.PI / 2);
@@ -66,48 +84,29 @@ namespace HoleVortex.Models
                 X = CurrentPlanet.X + x;
                 Y = CurrentPlanet.Y + y;
 
-                _engine.Surface.Canvas.Camera.SetAngleTarget(-Angle, CurrentPlanet.X, CurrentPlanet.Y);
+          //      _engine.Surface.Canvas.Camera.SetAngleTarget(-Angle, CurrentPlanet.X, CurrentPlanet.Y);
         //        _engine.Surface.Canvas.Camera.Angle = -CurrentPlanet.Angle;
         //        _engine.Surface.Canvas.Camera.CenterRotation = new Vec2(CurrentPlanet.X, CurrentPlanet.Y);
             }
             else
             {
                 if (VelacityY <= 0)
-                    _engine.Surface.Canvas.Camera.SetTarget(0, -Y + (_engine.Surface.Height) - _engine.Surface.Height / 4);
-                _engine.Surface.Canvas.Camera.SetAngleTarget(-Angle, X, Y);
-                
-                CheckEndGame();
-            }
-        }
+                    _engine.Surface.Canvas.Camera.SetTarget(0,
+                        -Y + (_engine.Surface.Height) - _engine.Surface.Height / 4);
+                //     _engine.Surface.Canvas.Camera.SetAngleTarget(-Angle, X, Y);
 
-        private void CheckEndGame()
-        {
-            var d = (_engine.Surface.Canvas.Camera.Y - _engine.Surface.Height / 2) - Y;
-            if (X <= -Radius*2 || X >= _engine.Surface.Width + Radius*2 ||
-                d <= 0)
-            {
-                EndGame?.Invoke(new GameResult());
+                var ps = (ParticlesControllerFire) _engine.Particles.GetSystem(typeof(ParticlesControllerFire));
+                ps.AddBlood(X, Y, new Vec2(), 1);
             }
         }
 
         public void Draw()
         {
-            var paint = new SKPaint
-            {
-                IsAntialias = true,
-                Style = SKPaintStyle.Fill,
-                Color = new SKColor(150, 150, 150)
-            };
             
-            var path = new SKPath();
             _engine.Surface.Canvas.Save();
             _engine.Surface.Canvas.Translate(X, Y);
             _engine.Surface.Canvas.RotateRadians(Angle);
-            path.MoveTo(A.X, A.Y);
-            path.LineTo(B.X, B.Y);
-            path.LineTo(C.X, C.Y);
-            path.Close();
-            _engine.Surface.Canvas.DrawPath(path, paint);
+            _engine.Surface.Canvas.DrawPath(Path, Paint);
             _engine.Surface.Canvas.Restore();
         }
 
@@ -136,15 +135,23 @@ namespace HoleVortex.Models
                 angle += (float)Math.PI / 2 - planet.Angle;
 
             //    planet.AngularVelocity = 0.04f;
-                planet.Angle = angle;
+                planet.CorrectAngle = -angle;
+            //    planet.Angle = angle;
                 planet.IsCheck = true;
                 SetPlanet(planet);
 
                 ((GameScreen) _engine.Screens.CurrentScreen).LayoutTop.IncrementBalls();
+                IncrementBalls?.Invoke(null, null);
                 return true;
             }
 
             return false;
+        }
+
+        public void Dispose()
+        {
+            Paint.Dispose();
+            Path.Dispose();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ConsoleApplication2.UI.Components.Screens
             UI = new UIController();
         }
 
-        public void SetScreen(Screen screen)
+        public void SetScreen(Screen screen, object data = null, IScreenAnimation animation = null)
         {
             CurrentScreen?.OnPaused();
             CurrentScreen?.Dispose();
@@ -28,6 +28,13 @@ namespace ConsoleApplication2.UI.Components.Screens
             screen.Height = Height;
             screen.HipsterEngine = _hipsterEngine;
             screen.SetUIController(UI);
+            screen.Intent = new Intent
+            {
+                From = CurrentScreen,
+                To = screen,
+                Animation = animation,
+                Data = data
+            };
             CurrentScreen = screen;
             CurrentScreen.OnLoad();
         }
@@ -50,11 +57,13 @@ namespace ConsoleApplication2.UI.Components.Screens
         public void Step(double time, float dt)
         {
             CurrentScreen?.OnUpdate(time, dt);
+            CurrentScreen?.Intent?.Animation?.Update();
         }
 
         public void Draw(SKCanvas canvas)
         {
             CurrentScreen?.OnDraw(canvas);
+            CurrentScreen?.Intent?.Animation?.Draw(_hipsterEngine.Surface.Canvas);
         }
 
         public void Dispose()

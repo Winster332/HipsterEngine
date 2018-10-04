@@ -15,7 +15,10 @@ namespace HipsterEngine.Particles
 
         public void AddParticleSystem<T>(T particlesSystem) where T : ParticlesSystem
         {
-            _particlesSystems.Add(particlesSystem.GetType(), particlesSystem);
+            if (!_particlesSystems.ContainsKey(particlesSystem.GetType()))
+            {
+                _particlesSystems.Add(particlesSystem.GetType(), particlesSystem);
+            }
         }
         
         public ParticlesSystem GetSystem(Type type)

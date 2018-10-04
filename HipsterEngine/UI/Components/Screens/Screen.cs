@@ -9,6 +9,7 @@ namespace ConsoleApplication2.UI.Components.Screens
     {
         public event PaintEventHandler Paint;
         public event UpdateEventHandler Update;
+        public event UnloadedScreenEventHandler Unloaded;
         public event MouseEventHandler MouseDown;
         public event MouseEventHandler MouseMove;
         public event MouseEventHandler MouseUp;
@@ -18,7 +19,8 @@ namespace ConsoleApplication2.UI.Components.Screens
         public float Height { get; set; }
         public HipsterEngine HipsterEngine { get; set; }
         private UIController _uiController { get; set; }
-        protected bool Enabled { get; set; }
+        public bool Enabled { get; set; }
+        public Intent Intent { get; set; }
 
         protected Screen()
         {
@@ -45,11 +47,8 @@ namespace ConsoleApplication2.UI.Components.Screens
 
         public void OnDraw(SKCanvas canvas)
         {
-            if (Enabled)
-            {
-                Paint?.Invoke(null, canvas);
-                _uiController.Step(canvas);
-            }
+            Paint?.Invoke(null, canvas);
+            _uiController.Step(canvas);
         }
 
         public void OnMouseAction(MouseState mouseState)
@@ -77,6 +76,7 @@ namespace ConsoleApplication2.UI.Components.Screens
         public void Dispose()
         {
             _uiController.Dispose();
+            Unloaded?.Invoke(this);
         }
 
         public void OnPaused()
@@ -89,6 +89,11 @@ namespace ConsoleApplication2.UI.Components.Screens
         public void SetUIController(UIController controller)
         {
             _uiController = controller;
+        }
+
+        public void OnResume()
+        {
+            Enabled = true;
         }
     }
 }
