@@ -43,8 +43,10 @@ namespace HoleVortex.Screens
             HipsterEngine.Surface.Canvas.Camera.Y = Height / 2;
             HipsterEngine.Surface.Canvas.Camera.SetTarget(PlanetStart.X - Width / 2, PlanetStart.Y + Height / 4);
             
+            var profile = LoadProfile();
+            
             Map = new MapPlanets(HipsterEngine, Triangle);
-            Map.Generate();
+            Map.Generate(profile.Level);
             Map.EndGame += TriangleOnEndGame;
             
             AnimationEndGame = new AnimationFloat();
@@ -53,10 +55,11 @@ namespace HoleVortex.Screens
                 HipsterEngine.Screens.SetScreen(new MenuScreen(), null, null);
             };
 
-            LoadProfile();
+            LayoutRecords.TextRecord = profile.Balls.ToString();
+            PlanetStart.Text = profile.Level.ToString();
         }
         
-        public void LoadProfile()
+        public Profile LoadProfile()
         {
             Profile profile = null;
             
@@ -74,8 +77,7 @@ namespace HoleVortex.Screens
                 profile = HipsterEngine.Files.Deserialize<Profile>(Assert.PathToProfile);
             }
 
-            LayoutRecords.TextRecord = profile.Balls.ToString();
-            PlanetStart.Text = profile.Level.ToString();
+            return profile;
         }
 
         private void OnUnloaded(Screen screen)

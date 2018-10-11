@@ -1,7 +1,4 @@
-﻿using System.Windows.Forms;
-using HipsterEngine.Desktop;
-
-namespace FlatPlant
+﻿namespace FlatPlant
 {
     internal class Program
     {

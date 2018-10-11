@@ -1,0 +1,11 @@
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/bin/Debug/netstandard2.0/HipsterEngine.Core.deps.json
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/bin/Debug/netstandard2.0/HipsterEngine.Core.dll
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/bin/Debug/netstandard2.0/HipsterEngine.Core.pdb
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/obj/Debug/netstandard2.0/HipsterEngine.Core.csprojAssemblyReference.cache
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/obj/Debug/netstandard2.0/HipsterEngine.Core.csproj.CoreCompileInputs.cache
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/obj/Debug/netstandard2.0/HipsterEngine.Core.AssemblyInfoInputs.cache
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/obj/Debug/netstandard2.0/HipsterEngine.Core.AssemblyInfo.cs
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/obj/Debug/netstandard2.0/HipsterEngine.Core.csproj.CopyComplete
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/obj/Debug/netstandard2.0/HipsterEngine.Core.dll
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/obj/Debug/netstandard2.0/HipsterEngine.Core.pdb
+/Users/kusy/Documents/Новая папка/HipsterEngine.Core/bin/Debug/netstandard2.0/Box2DX.dll

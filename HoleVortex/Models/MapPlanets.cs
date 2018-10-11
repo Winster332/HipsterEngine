@@ -36,17 +36,18 @@ namespace HoleVortex.Models
             };
         }
 
-        public void Generate()
+        public void Generate(int multiCount)
         {
             var y = _engine.Surface.Height / 2 - (_engine.Surface.Height / 3);
-            var angularVelacity = 0.04f;
+            var deltaAngular = multiCount / 10.0f;
+            var angularVelacity = 0.08f * deltaAngular;
             
-            for (var i = 0; i < 20; i++)
+            for (var i = 0; i < 10 * multiCount; i++)
             {
                 var radius = _random.Next(50, 100);
                 var x = _random.Next((int)(radius), (int) (_engine.Surface.Width - radius));
                 y -= radius*3;
-                angularVelacity += 0.001f;
+                angularVelacity += (0.001f * deltaAngular);
                 var vel = _random.Next(-1, 1);
                 if (vel == 0)
                     vel = 1;

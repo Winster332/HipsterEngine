@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A005296A-01B8-4EA0-A1EE-BD7A7B6B129D}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HoleVortex.Android</RootNamespace>
+    <AssemblyName>HoleVortex.Android</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Box2DX, Version=2.0.1.28279, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\Downloads\Box2DX.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="SkiaSharp, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <HintPath>..\packages\SkiaSharp.1.60.3\lib\MonoAndroid\SkiaSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Android, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <HintPath>..\packages\SkiaSharp.Views.1.60.3\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Asserts\Assert.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\Circle.cs" />
+    <Compile Include="Models\GameResult.cs" />
+    <Compile Include="Models\MapPlanets.cs" />
+    <Compile Include="Models\Planets\Planet.cs" />
+    <Compile Include="Models\Planets\PlanetStart.cs" />
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\Triangle.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\GameScreen.cs" />
+    <Compile Include="Screens\MenuScreen.cs" />
+    <Compile Include="Screens\UI\Button.cs" />
+    <Compile Include="Screens\UI\ButtonPause.cs" />
+    <Compile Include="Screens\UI\Label.cs" />
+    <Compile Include="Screens\UI\LayoutRecord.cs" />
+    <Compile Include="Screens\UI\LayoutTop.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\button_pause.png" />
+    <AndroidAsset Include="Assets\button_resume.png" />
+    <AndroidAsset Include="Assets\circle_0.png" />
+    <AndroidAsset Include="Assets\circle_1.png" />
+    <AndroidAsset Include="Assets\circle_2.png" />
+    <AndroidAsset Include="Assets\circle_3.png" />
+    <AndroidAsset Include="Assets\circle_4.png" />
+    <AndroidAsset Include="Assets\circle_5.png" />
+    <AndroidAsset Include="Assets\circle_6.png" />
+    <AndroidAsset Include="Assets\circle_7.png" />
+    <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HipsterEngine.Core.Android\HipsterEngine.Core.Android.csproj">
+      <Project>{5589cbb8-2d31-4dff-9219-12db3c674372}</Project>
+      <Name>HipsterEngine.Core.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HipsterEngine.Core\HipsterEngine.Core.csproj">
+      <Project>{e9ca7cd4-ddd6-4abb-9a17-c1df44e50beb}</Project>
+      <Name>HipsterEngine.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+          <Target Name="BeforeBuild">
+          </Target>
+          <Target Name="AfterBuild">
+          </Target>
+   -->
+</Project>

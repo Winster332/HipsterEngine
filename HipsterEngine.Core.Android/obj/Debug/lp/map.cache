@@ -1,0 +1,6 @@
+HipsterEngine.Core
+System.Runtime
+netstandard
+Box2DX
+SkiaSharp
+SkiaSharp.Views.Android

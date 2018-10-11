@@ -1,0 +1,9 @@
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/bin/Debug/netstandard2.0/HipsterEngine.Box2D.deps.json
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/bin/Debug/netstandard2.0/HipsterEngine.Box2D.dll
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/bin/Debug/netstandard2.0/HipsterEngine.Box2D.pdb
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/obj/Debug/netstandard2.0/HipsterEngine.Box2D.csprojAssemblyReference.cache
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/obj/Debug/netstandard2.0/HipsterEngine.Box2D.csproj.CoreCompileInputs.cache
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/obj/Debug/netstandard2.0/HipsterEngine.Box2D.AssemblyInfoInputs.cache
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/obj/Debug/netstandard2.0/HipsterEngine.Box2D.AssemblyInfo.cs
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/obj/Debug/netstandard2.0/HipsterEngine.Box2D.dll
+/Users/kusy/Documents/Новая папка/HipsterEngine.Box2D/obj/Debug/netstandard2.0/HipsterEngine.Box2D.pdb

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using SkiaSharp;
-using TestOpenTK;
 
 namespace HoleVortex.Asserts
 {

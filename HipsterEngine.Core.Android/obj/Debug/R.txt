@@ -1,0 +1,2 @@
+int string ApplicationName 0x7f020001
+int string Hello 0x7f020000
