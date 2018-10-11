@@ -348,35 +348,38 @@
     ]
   },
   "packageFolders": {
-    "/Users/kusy/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Winster332\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kusy/Documents/Новая папка/Examples/HoleVortex/HoleVortex.Core/HoleVortex.Core.csproj",
+      "projectUniqueName": "C:\\git\\HipsterEngine\\Examples\\HoleVortex\\HoleVortex.Core\\HoleVortex.Core.csproj",
       "projectName": "HoleVortex.Core",
-      "projectPath": "/Users/kusy/Documents/Новая папка/Examples/HoleVortex/HoleVortex.Core/HoleVortex.Core.csproj",
-      "packagesPath": "/Users/kusy/.nuget/packages/",
-      "outputPath": "/Users/kusy/Documents/Новая папка/Examples/HoleVortex/HoleVortex.Core/obj/",
+      "projectPath": "C:\\git\\HipsterEngine\\Examples\\HoleVortex\\HoleVortex.Core\\HoleVortex.Core.csproj",
+      "packagesPath": "C:\\Users\\Winster332\\.nuget\\packages\\",
+      "outputPath": "C:\\git\\HipsterEngine\\Examples\\HoleVortex\\HoleVortex.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/kusy/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Winster332\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.scidatasoft.com/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/Users/kusy/Documents/Новая папка/HipsterEngine.Core/HipsterEngine.Core.csproj": {
-              "projectPath": "/Users/kusy/Documents/Новая папка/HipsterEngine.Core/HipsterEngine.Core.csproj"
+            "C:\\git\\HipsterEngine\\HipsterEngine.Core\\HipsterEngine.Core.csproj": {
+              "projectPath": "C:\\git\\HipsterEngine\\HipsterEngine.Core\\HipsterEngine.Core.csproj"
             }
           }
         }
