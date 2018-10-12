@@ -11,3 +11,16 @@
 /Users/kusy/Documents/Новая папка/HipsterEngine.Core.Desktop/obj/Debug/netstandard2.0/HipsterEngine.Core.Desktop.dll
 /Users/kusy/Documents/Новая папка/HipsterEngine.Core.Desktop/obj/Debug/netstandard2.0/HipsterEngine.Core.Desktop.pdb
 /Users/kusy/Documents/Новая папка/HipsterEngine.Core.Desktop/bin/Debug/netstandard2.0/Box2DX.dll
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\bin\Debug\netstandard2.0\HipsterEngine.Core.Desktop.deps.json
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\bin\Debug\netstandard2.0\HipsterEngine.Core.Desktop.dll
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\bin\Debug\netstandard2.0\HipsterEngine.Core.Desktop.pdb
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\bin\Debug\netstandard2.0\HipsterEngine.Core.dll
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\bin\Debug\netstandard2.0\Box2DX.dll
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\bin\Debug\netstandard2.0\HipsterEngine.Core.pdb
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\obj\Debug\netstandard2.0\HipsterEngine.Core.Desktop.csprojAssemblyReference.cache
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\obj\Debug\netstandard2.0\HipsterEngine.Core.Desktop.csproj.CoreCompileInputs.cache
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\obj\Debug\netstandard2.0\HipsterEngine.Core.Desktop.AssemblyInfoInputs.cache
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\obj\Debug\netstandard2.0\HipsterEngine.Core.Desktop.AssemblyInfo.cs
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\obj\Debug\netstandard2.0\HipsterEngine.Core.Desktop.csproj.CopyComplete
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\obj\Debug\netstandard2.0\HipsterEngine.Core.Desktop.dll
+C:\git\HipsterEngine\HipsterEngine.Core.Desktop\obj\Debug\netstandard2.0\HipsterEngine.Core.Desktop.pdb
