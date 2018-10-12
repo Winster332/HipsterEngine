@@ -33,11 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Box2DX, Version=2.0.1.28279, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\Downloads\Box2DX.dll</HintPath>
+    <Reference Include="Box2DX">
+      <HintPath>..\libs\Box2DX.dll</HintPath>
     </Reference>
-    <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4">
-      <HintPath>..\..\..\.nuget\packages\opentk\3.0.1\lib\net20\OpenTK.dll</HintPath>
+    <Reference Include="OpenTK">
+      <HintPath>..\libs\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
       <HintPath>..\packages\SkiaSharp.1.60.3\lib\net45\SkiaSharp.dll</HintPath>
