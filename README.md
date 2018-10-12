@@ -27,6 +27,10 @@ The following projects are implemented with this solution. You can find them in 
 
 ## Gallery
 
+<<<<<<< HEAD
 ![N|Solid](https://github.com/Winster332/HipsterEngine/blob/PC/Screenshots/2018-09-28%2014.27.58.jpg)
 ![N|Solid](https://github.com/Winster332/HipsterEngine/blob/PC/Screenshots/2018-09-28%2014.28.45.jpg)
 ![N|Solid](https://github.com/Winster332/HipsterEngine/blob/PC/Screenshots/2018-09-28%2014.28.36.jpg)
+=======
+![N|Solid](https://pp.userapi.com/c824601/v824601886/12052c/ggEI1sBmGc8.jpg)
+>>>>>>> master
