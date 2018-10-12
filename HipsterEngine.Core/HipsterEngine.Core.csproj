@@ -9,7 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Box2DX, Version=2.0.1.28279, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\Downloads\Box2DX.dll</HintPath>
+      <HintPath>..\libs\Box2DX.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
