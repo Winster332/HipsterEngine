@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\git\\HipsterEngine\\Examples\\HoleVortex\\HoleVortex.Core\\HoleVortex.Core.csproj",
+    "projectUniqueName": "/Users/kusy/Documents/Новая папка/Examples/HoleVortex/HoleVortex.Core/HoleVortex.Core.csproj",
     "projectName": "HoleVortex.Core",
-    "projectPath": "C:\\git\\HipsterEngine\\Examples\\HoleVortex\\HoleVortex.Core\\HoleVortex.Core.csproj",
-    "outputPath": "C:\\git\\HipsterEngine\\Examples\\HoleVortex\\HoleVortex.Core\\obj\\",
+    "projectPath": "/Users/kusy/Documents/Новая папка/Examples/HoleVortex/HoleVortex.Core/HoleVortex.Core.csproj",
+    "outputPath": "/Users/kusy/Documents/Новая папка/Examples/HoleVortex/HoleVortex.Core/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netstandard2.0"
@@ -15,8 +15,8 @@
     "frameworks": {
       "netstandard2.0": {
         "projectReferences": {
-          "C:\\git\\HipsterEngine\\HipsterEngine.Core\\HipsterEngine.Core.csproj": {
-            "projectPath": "C:\\git\\HipsterEngine\\HipsterEngine.Core\\HipsterEngine.Core.csproj"
+          "/Users/kusy/Documents/Новая папка/HipsterEngine.Core/HipsterEngine.Core.csproj": {
+            "projectPath": "/Users/kusy/Documents/Новая папка/HipsterEngine.Core/HipsterEngine.Core.csproj"
           }
         }
       }
