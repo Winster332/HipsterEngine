@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\git\\HipsterEngine\\HipsterEngine.Core.Desktop\\HipsterEngine.Core.Desktop.csproj",
+    "projectUniqueName": "/Users/kusy/Documents/Новая папка/HipsterEngine.Core.Desktop/HipsterEngine.Core.Desktop.csproj",
     "projectName": "HipsterEngine.Core.Desktop",
-    "projectPath": "C:\\git\\HipsterEngine\\HipsterEngine.Core.Desktop\\HipsterEngine.Core.Desktop.csproj",
-    "outputPath": "C:\\git\\HipsterEngine\\HipsterEngine.Core.Desktop\\obj\\",
+    "projectPath": "/Users/kusy/Documents/Новая папка/HipsterEngine.Core.Desktop/HipsterEngine.Core.Desktop.csproj",
+    "outputPath": "/Users/kusy/Documents/Новая папка/HipsterEngine.Core.Desktop/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netstandard2.0"
@@ -15,8 +15,8 @@
     "frameworks": {
       "netstandard2.0": {
         "projectReferences": {
-          "C:\\git\\HipsterEngine\\HipsterEngine.Core\\HipsterEngine.Core.csproj": {
-            "projectPath": "C:\\git\\HipsterEngine\\HipsterEngine.Core\\HipsterEngine.Core.csproj"
+          "/Users/kusy/Documents/Новая папка/HipsterEngine.Core/HipsterEngine.Core.csproj": {
+            "projectPath": "/Users/kusy/Documents/Новая папка/HipsterEngine.Core/HipsterEngine.Core.csproj"
           }
         }
       }
