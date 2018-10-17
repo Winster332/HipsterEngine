@@ -1,23 +1,21 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.OS;
-using Android.Util;
-using Android.Views;
+using Android.Support.V7.App;
+using System.Collections.Generic;
+using System.IO;
 using HipsterEngine.Core.Android;
 using HipsterEngine.Core.Configurations;
 using HoleVortex.Core.Screens;
 
-namespace HoleVortex.Android
+namespace HoleVortex.Droid
 {
-    [Activity(Label = "HoleVortex.Android", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    public class MainActivity : AppCompatActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
-            
+            base.OnCreate(savedInstanceState);
+
             var assetsFiles = new List<string>()
             {
                 @"button_pause.png",
@@ -43,7 +41,7 @@ namespace HoleVortex.Android
                 .SetTargetFPS(60, 60)
                 .Run(new MenuScreen());
         }
-        
+
         public Stream[] GetStreams(List<string> files)
         {
             var listStreams = new List<Stream>();

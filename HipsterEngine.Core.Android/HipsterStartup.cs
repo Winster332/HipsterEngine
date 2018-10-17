@@ -20,6 +20,8 @@ namespace HipsterEngine.Core.Android
 
         public HipsterEngine CreateEngine(int width, int height)
         {
+            _activity.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+
             _view = new SKCanvasView(_activity);
             _view.Touch += ViewOnTouch;
             _view.PaintSurface += ViewOnPaintSurface;
