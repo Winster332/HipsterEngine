@@ -18,12 +18,12 @@
     <AndroidAsset Include="Assets\circle_7.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Box2DX, Version=2.0.1.28279, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\Downloads\Box2DX.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="SkiaSharp" Version="1.60.3" />
     <PackageReference Include="SkiaSharp.Views" Version="1.60.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Box2DX">
+      <HintPath>..\..\..\libs\Box2DX.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

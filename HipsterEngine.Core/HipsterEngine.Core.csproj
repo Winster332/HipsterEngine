@@ -3,13 +3,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="OpenTK" Version="3.0.1" />
     <PackageReference Include="SkiaSharp" Version="1.60.3" />
-    <PackageReference Include="SkiaSharp.Views" Version="1.60.3" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Box2DX, Version=2.0.1.28279, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\libs\Box2DX.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\libs\OpenTK.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
