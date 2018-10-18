@@ -21,10 +21,19 @@ namespace HipsterEngine.Core.UI.Components.Screens
         public HipsterEngine HipsterEngine { get; set; }
         private UIController _uiController { get; set; }
         public bool Enabled { get; set; }
+        public ScreenState State { get; set; }
+        private SKPaint _debugPaint;
 
         protected Screen()
         {
             Enabled = true;
+            State = ScreenState.Initialize;
+
+            _debugPaint = new SKPaint
+            {
+                TextSize = 20,
+                Color = new SKColor(100, 100, 100)
+            };
         }
 
         public void AddView(UIElement element)
@@ -39,28 +48,44 @@ namespace HipsterEngine.Core.UI.Components.Screens
 
         public void OnUpdate(double time, float dt)
         {
-            if (Enabled)
+            if (State == ScreenState.Running)
             {
-                Update?.Invoke(time, dt);
+                if (Enabled)
+                {
+                    Update?.Invoke(time, dt);
+                }
             }
         }
 
         public void OnDraw(SKCanvas canvas)
         {
-            Paint?.Invoke(null, canvas);
-            _uiController.Step(canvas);
+            if (State == ScreenState.Running)
+            {
+                Paint?.Invoke(null, canvas);
+                _uiController.Step(canvas);
+
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    canvas.DrawText($"FPS: {HipsterEngine.DeltaTime.GetFPS()}", 10, 25, _debugPaint);
+                    canvas.DrawText($"Screen: {GetType().Name}", 10, 50, _debugPaint);
+                    canvas.DrawText($"State: {State}", 10, 75, _debugPaint);
+                }
+            }
         }
 
         public void OnMouseAction(MouseState mouseState)
         {
-            switch (mouseState.Action)
+            if (State != ScreenState.Finished)
             {
-                case MouseAction.Down: MouseDown?.Invoke(null, mouseState); break;
-                case MouseAction.Move: MouseMove?.Invoke(null, mouseState); break;
-                case MouseAction.Up: MouseUp?.Invoke(null, mouseState); break;
+                switch (mouseState.Action)
+                {
+                    case MouseAction.Down: MouseDown?.Invoke(null, mouseState); break;
+                    case MouseAction.Move: MouseMove?.Invoke(null, mouseState); break;
+                    case MouseAction.Up: MouseUp?.Invoke(null, mouseState); break;
+                }
+
+                _uiController.SendMouse(mouseState);
             }
-            
-            _uiController.SendMouse(mouseState);
         }
 
         public void OnKeyDown(Keys key)
@@ -75,12 +100,15 @@ namespace HipsterEngine.Core.UI.Components.Screens
 
         public void Dispose()
         {
-            _uiController.Dispose();
+            State = ScreenState.Finished;
+
+            _uiController?.Dispose();
             Unloaded?.Invoke(this);
         }
 
         public void OnPaused()
         {
+            State = ScreenState.Paused;
             Enabled = false;
         }
 
@@ -93,6 +121,8 @@ namespace HipsterEngine.Core.UI.Components.Screens
 
         public void OnResume()
         {
+            State = ScreenState.Running;
+
             Enabled = true;
         }
     }

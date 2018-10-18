@@ -10,7 +10,8 @@ namespace HipsterEngine.Core.Android
     public class HipsterStartup : IStartup
     {
         public HipsterEngine Engine { get; set; }
-        private SKCanvasView _view;
+        private SKGLSurfaceView _view;
+        private SKGLRenderer _renderer;
         private Activity _activity;
 
         public HipsterStartup(Activity activity)
@@ -22,9 +23,12 @@ namespace HipsterEngine.Core.Android
         {
             _activity.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
 
-            _view = new SKCanvasView(_activity);
+            _renderer = new SKGLRenderer();
+
+            _view = new SKGLSurfaceView(_activity);
+            _view.SetRenderer(_renderer);
             _view.Touch += ViewOnTouch;
-            _view.PaintSurface += ViewOnPaintSurface;
+            _renderer.PaintSurface += ViewOnPaintSurface;
             
             Engine = new HipsterEngine(width, height);
             Engine.OnResize(width, height);
@@ -32,16 +36,16 @@ namespace HipsterEngine.Core.Android
             return Engine;
         }
 
-        private void ViewOnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        private void ViewOnPaintSurface(SKSurface surface, GRBackendRenderTargetDesc renderTarget)
         {
-            var canvas = e.Surface.Canvas;
+            var canvas = surface.Canvas;
             
             canvas.Clear(new SKColor(50, 50, 50));
             
             Engine?.Step(1, 1);
             Engine?.Draw(canvas);
             
-            _view.Invalidate();
+        //    _view.Invalidate();
         }
 
         private void ViewOnTouch(object sender, View.TouchEventArgs e)

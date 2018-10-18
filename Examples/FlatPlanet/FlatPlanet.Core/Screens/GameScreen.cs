@@ -180,24 +180,6 @@ namespace FlatPlant.Screens
         private void OnPaint(UIElement element, SKCanvas canvas)
         {
             Timer.Update();
-            canvas.DrawText($"Current screen: {GetType().Name} [FPS: {HipsterEngine.DeltaTime.GetFPS()}]", 10, 75,
-                new SKPaint
-                {
-                    TextSize = 20,
-                    Color = new SKColor(100, 100, 100)
-                });
-
-            canvas.DrawText($"Mouse: [{MousePosition.X}, {MousePosition.Y}]", 10, 25, new SKPaint
-            {
-                TextSize = 20,
-                Color = new SKColor(100, 100, 100)
-            });
-
-            canvas.DrawText($"Life: {ValueX}", 10, 50, new SKPaint
-            {
-                TextSize = 20,
-                Color = new SKColor(100, 100, 100)
-            });
 
             var deltaTime = HipsterEngine.DeltaTime.GetDeltaTime();
             mControl.Update();

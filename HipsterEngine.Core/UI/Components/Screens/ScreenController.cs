@@ -31,6 +31,7 @@ namespace HipsterEngine.Core.UI.Components.Screens
             screen.SetUIController(UI);
             CurrentScreen = screen;
             CurrentScreen.OnLoad();
+            CurrentScreen.State = ScreenState.Running;
         }
 
         public void OnMouse(MouseState mouseState)

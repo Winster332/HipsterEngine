@@ -151,8 +151,8 @@ namespace HoleVortex.Core.Models
 
         public void Dispose()
         {
-            Paint.Dispose();
-            Path.Dispose();
+            Paint?.Dispose();
+            Path?.Dispose();
         }
     }
 }

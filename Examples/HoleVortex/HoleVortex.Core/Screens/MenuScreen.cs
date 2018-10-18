@@ -82,6 +82,11 @@ namespace HoleVortex.Core.Screens
 
         private void OnUnloaded(Screen screen)
         {
+            Update -= OnUpdate;
+            Paint -= OnPaint;
+            MouseDown -= OnMouseDown;
+            Unloaded -= OnUnloaded;
+
             LayoutRecords.Dispose();
             Planet.Dispose();
             Triangle.Dispose();
@@ -89,11 +94,6 @@ namespace HoleVortex.Core.Screens
             paint.Dispose();
             AnimationEndGame.Dispose();
             PaintAnimation.Dispose();
-
-            Update -= OnUpdate;
-            Paint -= OnPaint;
-            MouseDown -= OnMouseDown;
-            Unloaded -= OnUnloaded;
         }
         public SKPaint paint;
 
