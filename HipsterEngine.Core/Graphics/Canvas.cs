@@ -14,6 +14,11 @@ namespace HipsterEngine.Core.Graphics
             Camera = new Camera(surface);
         }
 
+        public void Clear(SKColor color)
+        {
+            _canvas.Clear(color);
+        }
+
         public void Save()
         {
             _canvas.Save();

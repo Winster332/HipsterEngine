@@ -4,9 +4,13 @@ using HipsterEngine.Core.UI.Animations;
 using HipsterEngine.Core.UI.Components;
 using HipsterEngine.Core.UI.Components.Screens;
 using HipsterEngine.Core.UI.Events.Mouse;
+using HoleVortex.Core.Background;
 using HoleVortex.Core.IO;
 using HoleVortex.Core.Models;
+using HoleVortex.Core.Models.Meshes;
 using HoleVortex.Core.Models.Planets;
+using HoleVortex.Core.Models.Planets.Meshes;
+using HoleVortex.Core.Particles;
 using HoleVortex.Core.Screens.UI;
 using SkiaSharp;
 
@@ -20,6 +24,7 @@ namespace HoleVortex.Core.Screens
         public PlanetStart PlanetStart { get; set; }
         public MapPlanets Map { get; set; }
         public AnimationFloat AnimationEndGame { get; set; }
+        public ParallaxBackground Background { get; set; }
         
         public override void OnLoad()
         {
@@ -36,13 +41,15 @@ namespace HoleVortex.Core.Screens
             HipsterEngine.Particles.AddParticleSystem(new ParticlesControllerFire(HipsterEngine));
             
             var triangleRadius = PlanetStart.Radius / 4;
-            var y = PlanetStart.Y - PlanetStart.Radius - triangleRadius + 2;
+            var y = PlanetStart.Transform.Y - PlanetStart.Radius - triangleRadius + 2;
             Triangle = new Triangle(HipsterEngine, Width / 2, y, triangleRadius);
             Triangle.SetPlanet(PlanetStart);
             
+            HipsterEngine.Particles.AddParticleSystem(new TriangleParticlesController(HipsterEngine, Triangle));
+            
             HipsterEngine.Surface.Canvas.Camera.X = -Width / 2;
             HipsterEngine.Surface.Canvas.Camera.Y = Height / 2;
-            HipsterEngine.Surface.Canvas.Camera.SetTarget(PlanetStart.X - Width / 2, PlanetStart.Y + Height / 4);
+            HipsterEngine.Surface.Canvas.Camera.SetTarget(PlanetStart.Transform.X - Width / 2, PlanetStart.Transform.Y + Height / 4);
             
             var profile = LoadProfile();
             
@@ -58,6 +65,8 @@ namespace HoleVortex.Core.Screens
 
             LayoutRecords.TextRecord = profile.Balls.ToString();
             PlanetStart.Text = profile.Level.ToString();
+            
+            Background = new ParallaxBackground(HipsterEngine, Triangle);
         }
         
         public Profile LoadProfile()
@@ -122,12 +131,14 @@ namespace HoleVortex.Core.Screens
         {
             LayoutTop.Update();
             Map.Update();
-            PlanetStart.Update();
+            PlanetStart.Step();
             AnimationEndGame.Update();
+            Background.Step();
         }
 
         private void OnPaint(UIElement element, SKCanvas canvas)
         {
+            Background.Draw(HipsterEngine.Surface.Canvas);
             LayoutTop.Draw();
             
             HipsterEngine.Surface.Canvas.Camera.Update();

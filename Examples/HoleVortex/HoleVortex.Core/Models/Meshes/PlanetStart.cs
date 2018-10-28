@@ -1,7 +1,7 @@
 ﻿using System;
 using SkiaSharp;
 
-namespace HoleVortex.Core.Models.Planets
+namespace HoleVortex.Core.Models.Planets.Meshes
 {
     public class PlanetStart : Planet, IDisposable
     {
@@ -42,13 +42,13 @@ namespace HoleVortex.Core.Models.Planets
         public void Draw()
         {
             _engine.Surface.Canvas.Save();
-            _engine.Surface.Canvas.Translate(X, Y);
-            _engine.Surface.Canvas.RotateRadians(Angle);
+            _engine.Surface.Canvas.Translate(Transform.X, Transform.Y);
+            _engine.Surface.Canvas.RotateRadians(Transform.Angle);
             _engine.Surface.Canvas.DrawCircle(0, 0, Radius, Paint1);
             _engine.Surface.Canvas.DrawCircle(0, 0, Radius - 5, Paint2);
             _engine.Surface.Canvas.DrawCircle(0, 0, Radius - 5, Paint1);
             _engine.Surface.Canvas.Restore();
-            _engine.Surface.Canvas.DrawText(Text, X, Y + 26, PaintText);
+            _engine.Surface.Canvas.DrawText(Text, Transform.X, Transform.Y + 26, PaintText);
         }
 
         public void Dispose()

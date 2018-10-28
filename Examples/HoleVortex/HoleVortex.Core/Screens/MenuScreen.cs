@@ -3,9 +3,12 @@ using HipsterEngine.Core.UI.Animations;
 using HipsterEngine.Core.UI.Components;
 using HipsterEngine.Core.UI.Components.Screens;
 using HipsterEngine.Core.UI.Events.Mouse;
+using HoleVortex.Core.Background;
 using HoleVortex.Core.IO;
 using HoleVortex.Core.Models;
+using HoleVortex.Core.Models.Meshes;
 using HoleVortex.Core.Models.Planets;
+using HoleVortex.Core.Models.Planets.Meshes;
 using HoleVortex.Core.Screens.UI;
 using SkiaSharp;
 
@@ -32,13 +35,14 @@ namespace HoleVortex.Core.Screens
             LayoutRecords = new LayoutRecord(HipsterEngine);
             Planet = new PlanetStart(HipsterEngine, Width / 2, Height / 4, Height / 8);
             var triangleRadius = Planet.Radius / 4;
-            var y = Planet.Y - Planet.Radius - triangleRadius + 2;
+            var y = Planet.Transform.Y - Planet.Radius - triangleRadius + 2;
             Triangle = new Triangle(HipsterEngine, Width / 2, y, triangleRadius);
-            LabelTouchMe = new Label(HipsterEngine, Width / 2, Height / 2+10, "TOUCH SCREEN", new SKPaint
+            LabelTouchMe = new Label(HipsterEngine, Width / 2, Height / 2+10, "1234 нажмите на hello", new SKPaint
             {
                 Color = new SKColor(150, 150, 150, 100),
                 IsAntialias = true,
                 TextAlign = SKTextAlign.Center,
+                Typeface = Assets.Typeface,
                 TextSize = 20
             }, 1);
             BackgroundColor = new SKColor(50, 50, 50);
@@ -115,7 +119,8 @@ namespace HoleVortex.Core.Screens
             
             LayoutRecords.Draw();
             Planet.Draw();
-            Triangle.Draw();
+            Triangle.Draw(HipsterEngine.Surface.Canvas);
+            
             
             HipsterEngine.Surface.Canvas.Save();
             HipsterEngine.Surface.Canvas.Translate(Width / 2, Height / 2);

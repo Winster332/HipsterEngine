@@ -10,6 +10,7 @@ namespace HoleVortex.Core.IO
         public static List<SKBitmap> Bitmaps;
         public static string PathToProfile { get; set; } = "profile.xml";
         public static string StoragePath { get; set; }
+        public static SKTypeface Typeface { get; set; }
         
         public static void Init(string storagePath)
         {
@@ -25,6 +26,8 @@ namespace HoleVortex.Core.IO
                 Bitmaps.Add(SKBitmap.Decode(stream));
                 stream.Close();
             }
+            
+            Typeface = SKTypeface.FromFile("../../../HoleVortex.Core/Assets/Fonts/123458.ttf");
         }
 
         public static Profile GetProfile(HipsterEngine.Core.HipsterEngine engine)
