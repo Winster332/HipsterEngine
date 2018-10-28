@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using HipsterEngine.Core.Graphics;
+using HipsterEngine.Core.UI.Animations;
 using HipsterEngine.Core.UI.Events.Mouse;
 using OpenTK.Input;
 using SkiaSharp;
@@ -34,6 +36,7 @@ namespace HipsterEngine.Core.Desktop
         private float _prevX;
         private float _prevY;
         public bool Enabled { get; set; }
+        public TimeWatch AnimationDown { get; set; }
         
         public InputMouse(GameWindowGPU window)
         {
@@ -48,18 +51,40 @@ namespace HipsterEngine.Core.Desktop
 
             X = 0;
             Y = 0;
-            Radius = 10;
+            Radius = (float)window.Width / (float)window.Height * 10.0f;
             KX = Mouse.GetState().X;
             KY = Mouse.GetState().Y;
             WindowRect = _window.ClientRectangle;
             State = MouseType.Stay;
             Enabled = true;
+
+            AnimationDown = new TimeWatch();
+            var time = Math.PI / 2;
+            var constRad = Radius;
+            AnimationDown.Tick += tick =>
+            {
+                time += 0.07f;
+                Radius = (float) Math.Sin(time) * constRad;
+
+                if (time >= (float) Math.PI / 2)
+                {
+                    AnimationDown.Stop();
+                }
+            };
+            
+            MouseDown += state =>
+            {
+                Radius = constRad;
+                time = 0;
+                AnimationDown.Start(1);
+            };
         }
 
         public void Update()
         {
             if (Enabled)
             {
+                AnimationDown.Update();
                 RulesCursor();
                 CheckEvents();
             }

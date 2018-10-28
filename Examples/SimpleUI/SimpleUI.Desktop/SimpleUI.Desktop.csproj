@@ -81,6 +81,10 @@
       <Project>{e9ca7cd4-ddd6-4abb-9a17-c1df44e50beb}</Project>
       <Name>HipsterEngine.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\HipsterEngine.UI\HipsterEngine.UI.csproj">
+      <Project>{b460dd35-8af1-4d7d-b678-7bf3b28bcef9}</Project>
+      <Name>HipsterEngine.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SimpleUI.Core\SimpleUI.Core.csproj">
       <Project>{acc94390-983d-4b14-8044-dcbadaac7657}</Project>
       <Name>SimpleUI.Core</Name>

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace HipsterEngine.Core.Files
 {
-    public class Files
+    public class Files : IFiles
     {
         public bool Serialize<T>(T data, string path) where T : class
         {

@@ -5,6 +5,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\HipsterEngine.Core.Desktop\HipsterEngine.Core.Desktop.csproj" />
     <ProjectReference Include="..\..\..\HipsterEngine.Core\HipsterEngine.Core.csproj" />
+    <ProjectReference Include="..\..\..\HipsterEngine.UI\HipsterEngine.UI.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Box2DX, Version=2.0.1.28279, Culture=neutral, PublicKeyToken=null">

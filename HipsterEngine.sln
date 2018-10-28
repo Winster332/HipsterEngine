@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlatPlanet.Android", "Examp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoleVortex.Android", "Examples\HoleVortex\HoleVortex.Droid\HoleVortex.Android.csproj", "{7A8DB126-84FD-4B2F-B619-3CA55859F9CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HipsterEngine.UI", "HipsterEngine.UI\HipsterEngine.UI.csproj", "{B460DD35-8AF1-4D7D-B678-7BF3B28BCEF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{7A8DB126-84FD-4B2F-B619-3CA55859F9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A8DB126-84FD-4B2F-B619-3CA55859F9CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A8DB126-84FD-4B2F-B619-3CA55859F9CE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B460DD35-8AF1-4D7D-B678-7BF3B28BCEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B460DD35-8AF1-4D7D-B678-7BF3B28BCEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B460DD35-8AF1-4D7D-B678-7BF3B28BCEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B460DD35-8AF1-4D7D-B678-7BF3B28BCEF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

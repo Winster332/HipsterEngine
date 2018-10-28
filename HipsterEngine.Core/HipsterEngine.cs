@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using HipsterEngine.Core.Files;
 using HipsterEngine.Core.Graphics;
 using HipsterEngine.Core.Particles;
 using HipsterEngine.Core.Physics;
