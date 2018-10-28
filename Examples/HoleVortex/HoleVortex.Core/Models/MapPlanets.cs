@@ -4,6 +4,7 @@ using System.Linq;
 using Box2DX.Common;
 using HipsterEngine.Core.Particles;
 using HoleVortex.Core.IO;
+using HoleVortex.Core.Models.Meshes;
 using HoleVortex.Core.Models.Planets;
 using HoleVortex.Core.Screens;
 using SkiaSharp;
@@ -71,12 +72,12 @@ namespace HoleVortex.Core.Models
 
         public void Update()
         {
-            Triangle.Update();
+            Triangle.Step();
             
             Planets.ForEach(planet =>
             {
                 Triangle.Intersect(planet);
-                planet.Update();
+                planet.Step();
             });
             
             CheckEndGame();
@@ -84,7 +85,7 @@ namespace HoleVortex.Core.Models
         
         private void CheckEndGame()
         {
-            if (Triangle.X <= -Triangle.Radius * 2 || Triangle.X >= _engine.Surface.Width + Triangle.Radius * 2)
+            if (Triangle.Transform.X <= -Triangle.Radius * 2 || Triangle.Transform.X >= _engine.Surface.Width + Triangle.Radius * 2)
             {
                 OnGameEnd(new GameResult
                 {
@@ -93,12 +94,12 @@ namespace HoleVortex.Core.Models
                 });
             }
 
-            if (Planets.Last().Y - 150 >= Triangle.Y)
+            if (Planets.Last().Transform.Y - 150 >= Triangle.Transform.Y)
             {
                 for (var i = 0; i < _engine.Surface.Width; i += 10)
                 {
                     var ps = (ParticlesControllerFire) _engine.Particles.GetSystem(typeof(ParticlesControllerFire));
-                    ps.AddBlood(i, Planets.Last().Y - 150, new Vec2(), 1);
+                    ps.AddBlood(i, Planets.Last().Transform.Y - 150, new Vec2(), 1);
                 }
                 
                 OnGameEnd(new GameResult
@@ -108,7 +109,7 @@ namespace HoleVortex.Core.Models
                 });
             }
 
-            if ((-_engine.Surface.Canvas.Camera.Y - Triangle.Y) + _engine.Surface.Height <= 0)
+            if ((-_engine.Surface.Canvas.Camera.Y - Triangle.Transform.Y) + _engine.Surface.Height <= 0)
             {
                 OnGameEnd(new GameResult
                 {
@@ -130,10 +131,10 @@ namespace HoleVortex.Core.Models
 
         public void Draw()
         {
-            Triangle.Draw();
-            Planets.ForEach(p => p.Draw());
+            Triangle.Draw(_engine.Surface.Canvas);
+            Planets.ForEach(p => p.Draw(_engine.Surface.Canvas));
             
-            _engine.Surface.Canvas.DrawLine(0, Planets.Last().Y - 150,  _engine.Surface.Width, Planets.Last().Y - 150, PaintFinishedLine);
+            _engine.Surface.Canvas.DrawLine(0, Planets.Last().Transform.Y - 150,  _engine.Surface.Width, Planets.Last().Transform.Y - 150, PaintFinishedLine);
         }
 
         public void Dispose()

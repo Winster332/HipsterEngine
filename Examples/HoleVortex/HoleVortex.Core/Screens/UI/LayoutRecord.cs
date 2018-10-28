@@ -1,5 +1,6 @@
 ﻿using System;
 using HipsterEngine.Core.Graphics;
+using HoleVortex.Core.IO;
 using SkiaSharp;
 
 namespace HoleVortex.Core.Screens.UI
@@ -61,6 +62,7 @@ namespace HoleVortex.Core.Screens.UI
                 IsAntialias = true,
                 Color = new SKColor(150, 150, 150),
                 TextAlign = SKTextAlign.Center,
+                Typeface = Assets.Typeface,
                 TextSize = 50
             };
         }

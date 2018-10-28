@@ -111,36 +111,11 @@ namespace HipsterEngine.Core.Desktop
 
                 canvas.Flush();
 
-                // <this was a event delegate before
                 var info = this.renderTarget;
 
                 PaintSurface?.Invoke(this, new SKPaintGLSurfaceEventArgs(surface, renderTarget));
 
-             //   canvas.Clear(SKColors.ForestGreen);
-
-                // removing this block stop the exception and paints the windows green
-           //     using (SKPaint paint = new SKPaint
-           //     {
-           //         Style = SKPaintStyle.Stroke,
-           //         Color = SKColors.Red,
-           //         IsAntialias = true,
-           //         StrokeWidth = 25
-           //     })
-           //     {
-           //         canvas.DrawCircle(info.Width / 2, info.Height / 2, 100, paint);
-           //         paint.Style = SKPaintStyle.Fill;
-            //        paint.Color = SKColors.Blue;
-            //        canvas.DrawCircle(info.Width / 2, info.Height / 2, 100, paint);
-           //     }
-                // />
-
                 canvas.Flush();
-                // throws System.AccessViolationException:
-                //  Attempted to read or write protected memory.
-                //  This is often an indication that other memory is corrupt.
-                //
-                // at SkiaSharp.SkiaApi.sk_canvas_flush(IntPtr canvas)
-                //  at SkiaSharp.SKCanvas.Flush()
             }
 
             this.context.Flush();

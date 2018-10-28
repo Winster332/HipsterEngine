@@ -14,9 +14,9 @@ namespace HipsterEngine.Core.Graphics
             Camera = new Camera(surface);
         }
 
-        public void ClipRect(SKRect rect)
+        public void Clear(SKColor color)
         {
-            _canvas.ClipRect(rect);
+            _canvas.Clear(color);
         }
 
         public void Save()

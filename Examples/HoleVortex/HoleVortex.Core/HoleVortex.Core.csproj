@@ -3,9 +3,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\HipsterEngine.Core\HipsterEngine.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\button_pause.png" />
     <AndroidAsset Include="Assets\button_resume.png" />
     <AndroidAsset Include="Assets\circle_0.png" />
@@ -16,14 +13,15 @@
     <AndroidAsset Include="Assets\circle_5.png" />
     <AndroidAsset Include="Assets\circle_6.png" />
     <AndroidAsset Include="Assets\circle_7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="1.60.3" />
-    <PackageReference Include="SkiaSharp.Views" Version="1.60.3" />
+    <None Remove="Assets\Fonts\12458.ttf" />
+    <AndroidAsset Include="Assets\Fonts\12458.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Box2DX">
       <HintPath>..\..\..\libs\Box2DX.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\HipsterEngine.Core\HipsterEngine.Core.csproj" />
   </ItemGroup>
 </Project>

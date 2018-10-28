@@ -1,16 +1,14 @@
 ﻿using HoleVortex.Core.IO;
+using HoleVortex.Core.Models.Behaviors.Common;
 using SkiaSharp;
 
 namespace HoleVortex.Core.Models.Planets
 {
-    public class Planet
+    public class Planet : Behavior
     {
-        public float X { get; set; }
-        public float Y { get; set; }
         public float VelacityX { get; set; }
         public float VelacityY { get; set; }
         public float Radius { get; set; }
-        public float Angle { get; set; }
         public float CorrectAngle { get; set; }
         public float AngularVelocity { get; set; }
         public bool IsCheck = false;
@@ -22,10 +20,10 @@ namespace HoleVortex.Core.Models.Planets
             float angularVelocity = 0)
         {
             _engine = engine;
-            X = x;
-            Y = y;
+            Transform.X = x;
+            Transform.Y = y;
             Radius = radius;
-            Angle = angle;
+            Transform.Angle = angle;
             VelacityX = 0;
             VelacityY = 0;
             AngularVelocity = angularVelocity;
@@ -33,26 +31,25 @@ namespace HoleVortex.Core.Models.Planets
             TextureId = textureId;
             
             _rect = SKRect.Create(-Radius, -Radius, Radius*2, Radius*2);
+            
+            Update += OnUpdate;
+            Paint += OnPaint;
+        }
+
+        private void OnUpdate()
+        {
+            Transform.Angle += AngularVelocity;
+            Transform.X += VelacityX;
+            Transform.Y += VelacityY;
+        }
+
+        private void OnPaint()
+        {
+            _engine.Surface.Canvas.DrawBitmap(Assets.Bitmaps[TextureId], _rect, null);
         }
 
         public void GenerateView()
         {
-        }
-
-        public void Update()
-        {
-            Angle += AngularVelocity;
-            X += VelacityX;
-            Y += VelacityY;
-        }
-
-        public void Draw()
-        {
-            _engine.Surface.Canvas.Save();
-            _engine.Surface.Canvas.Translate(X, Y);
-            _engine.Surface.Canvas.RotateRadians(Angle);
-            _engine.Surface.Canvas.DrawBitmap(Assets.Bitmaps[TextureId], _rect, null);
-            _engine.Surface.Canvas.Restore();
         }
     }
 }
