@@ -32,7 +32,12 @@ namespace HipsterEngine.Core.UI.Components.Screens
             _debugPaint = new SKPaint
             {
                 TextSize = 20,
-                Color = new SKColor(100, 100, 100)
+                Color = new SKColor(100, 100, 100),
+                Typeface = SKTypeface.FromFamilyName(
+                    "Arial", 
+                    SKFontStyleWeight.Normal, 
+                    SKFontStyleWidth.Normal, 
+                    SKFontStyleSlant.Upright),
             };
         }
 

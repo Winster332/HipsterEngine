@@ -20,7 +20,12 @@ namespace HipsterEngine.Core.UI.Components.Texts
                 Style = SKPaintStyle.Stroke,
                 TextAlign = SKTextAlign.Center,
                 IsAntialias = true,
-                Color = new SKColor(255, 255, 255)
+                Color = new SKColor(255, 255, 255),
+                Typeface = SKTypeface.FromFamilyName(
+                    "Arial", 
+                    SKFontStyleWeight.Normal, 
+                    SKFontStyleWidth.Normal, 
+                    SKFontStyleSlant.Upright)
             };
         }
         

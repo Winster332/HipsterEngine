@@ -19,7 +19,8 @@ namespace HipsterEngine.Core.Desktop
 
         public HipsterEngine Engine { get; set; }
         
-        public GameWindowGPU(int width, int height) : base(width, height, GraphicsMode.Default, "HipsterEngine 1.0")
+        public GameWindowGPU(int width, int height) 
+            : base(width, height, GraphicsMode.Default, "HipsterEngine 1.0", GameWindowFlags.Default, DisplayDevice.Default)
         {
             VSync = VSyncMode.Off;
             
@@ -102,11 +103,16 @@ namespace HipsterEngine.Core.Desktop
             this.renderTarget.Width = this.Width;
             this.renderTarget.Height = this.Height;
 
+            var props = new SKSurfaceProps
+            {
+                Flags = SKSurfacePropsFlags.None,
+                PixelGeometry = SKPixelGeometry.RgbHorizontal
+            };
             using (var surface = SKSurface.Create(this.context, this.renderTarget))
             {
                 Debug.Assert(surface != null);
                 Debug.Assert(surface.Handle != IntPtr.Zero);
-
+                
                 var canvas = surface.Canvas;
 
                 canvas.Flush();
