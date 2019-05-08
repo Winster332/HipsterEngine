@@ -1,0 +1,43 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/kusy/Documents/Новая папка/HipsterEngine/Examples/CrossZero.Desktop/CrossZero.Desktop.csproj",
+    "projectName": "CrossZero.Desktop",
+    "projectPath": "/Users/kusy/Documents/Новая папка/HipsterEngine/Examples/CrossZero.Desktop/CrossZero.Desktop.csproj",
+    "outputPath": "/Users/kusy/Documents/Новая папка/HipsterEngine/Examples/CrossZero.Desktop/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.1"
+    ],
+    "frameworks": {
+      "netcoreapp2.1": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.1": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.1.0, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

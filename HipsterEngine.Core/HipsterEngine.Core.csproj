@@ -14,4 +14,12 @@
       <HintPath>..\libs\OpenTK.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\.DS_Store" />
+    <Content Include="obj\HipsterEngine.Core.csproj.nuget.cache" />
+    <Content Include="obj\HipsterEngine.Core.csproj.nuget.g.props" />
+    <Content Include="obj\HipsterEngine.Core.csproj.nuget.g.targets" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\project.packagespec.json" />
+  </ItemGroup>
 </Project>
