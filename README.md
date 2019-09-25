@@ -30,3 +30,7 @@ The following projects are implemented with this solution. You can find them in 
 ![N|Solid](https://github.com/Winster332/HipsterEngine/blob/master/Screenshots/2018-09-28%2014.27.58.jpg)
 ![N|Solid](https://github.com/Winster332/HipsterEngine/blob/master/Screenshots/2018-09-28%2014.28.45.jpg)
 ![N|Solid](https://github.com/Winster332/HipsterEngine/blob/master/Screenshots/2018-09-28%2014.28.36.jpg)
+
+LICENCE
+-------
+[GNU General Public License v3.0](https://github.com/Winster332/HipsterEngine/blob/master/LICENSE)
